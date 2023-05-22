@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.OpenApi.Models;
+using QuizMaster3000.Providers;
 
 namespace QuizMaster3000
 {
@@ -21,7 +22,8 @@ namespace QuizMaster3000
 
 			// Add services to the container.
 			builder.Services.AddRazorPages();
-			//builder.Services.AddScoped<BattlePlanProvider>();
+
+			builder.Services.AddScoped<QuizProvider>();
 			
 			builder.Services.AddEndpointsApiExplorer();
 			builder.Services.AddSwaggerGen(c =>
@@ -46,7 +48,6 @@ namespace QuizMaster3000
 				c.DocInclusionPredicate((name, api) => true);
 			});
 
-
 			var app = builder.Build();
 
 			// Configure the HTTP request pipeline.
@@ -60,7 +61,6 @@ namespace QuizMaster3000
 				app.UseSwaggerUI();
 			}
 
-			app.UseHttpsRedirection();
 			app.UseStaticFiles();
 
 			app.UseRouting();

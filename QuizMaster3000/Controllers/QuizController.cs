@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using QuizMaster3000.Models;
 using QuizMaster3000.Providers;
 
 namespace QuizMaster3000.Controllers
@@ -20,5 +21,12 @@ namespace QuizMaster3000.Controllers
 		{
 			return Ok(await provider.GetQuizzes());
 		}
+		[HttpPost]
+		[Route("")]
+		public async Task<IActionResult> PostQuiz() //momentalne jen testovaci data, pozdeji asi bude nejake ui
+		{
+			return Ok(await provider.PostQuiz(10,2,RoomState.InLobby));
+		}
+
 	}
 }
