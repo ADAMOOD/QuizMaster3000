@@ -21,12 +21,21 @@ namespace QuizMaster3000.Controllers
 		{
 			return Ok(await provider.GetQuizzes());
 		}
+
+		[HttpGet]
+		[Route("random/{amount}")]
+		public async Task<IActionResult> GetRandomQuizzes([FromRoute] int amount)
+		{
+			return Ok(await provider.GenerateQuizzes(amount));
+		}
+
 		[HttpPost]
 		[Route("")]
 		public async Task<IActionResult> PostQuiz() //momentalne jen testovaci data, pozdeji asi bude nejake ui
 		{
 			return Ok(await provider.PostQuiz(10,2,RoomState.InLobby));
 		}
+
 
 	}
 }
