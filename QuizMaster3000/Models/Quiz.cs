@@ -2,10 +2,10 @@
 {
 	public class Quiz
 	{
-		private int MaxPlayerCount { get; set; }
-		private int CurrentPlayerCount { get; set; }
-		private RoomState RoomState { get; set; }
-		private DateTime CreatedAt { get; set; }
+		public int MaxPlayerCount { get; set; }
+		public int CurrentPlayerCount { get; set; }
+		public RoomState RoomState { get; set; }
+		public DateTime CreatedAt { get; set; }
 
 
 		public Quiz(int maxPlayerCount, int currentPlayerCount, RoomState roomState)

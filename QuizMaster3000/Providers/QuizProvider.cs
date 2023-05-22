@@ -6,6 +6,10 @@ public class QuizProvider
 {
 	private static List<Quiz> QuizList = new List<Quiz>();
 
+	public QuizProvider()
+	{
+
+	}
 	public async Task<List<Quiz>> GetQuizzes()
 	{
 		return QuizList;

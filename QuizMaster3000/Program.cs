@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.OpenApi.Models;
 using QuizMaster3000.Providers;
 
-namespace QuizMaster3000
+namespace BattlePlanner3000
 {
 	public class Program
 	{
@@ -11,20 +11,17 @@ namespace QuizMaster3000
 			var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 			var builder = WebApplication.CreateBuilder(args);
 
+
 			builder.Services.AddCors(options =>
 			{
 				options.AddPolicy(name: MyAllowSpecificOrigins,
-					policy =>
-					{
-						policy.WithOrigins("http://localhost:5173").AllowAnyHeader().AllowAnyMethod(); //tu si zmen url na to odkud to beres
-					});
+					policy => { policy.WithOrigins("http://localhost:5173").AllowAnyHeader().AllowAnyMethod(); });
 			});
 
 			// Add services to the container.
 			builder.Services.AddRazorPages();
-
 			builder.Services.AddScoped<QuizProvider>();
-			
+			builder.Services.AddControllers().AddNewtonsoftJson();
 			builder.Services.AddEndpointsApiExplorer();
 			builder.Services.AddSwaggerGen(c =>
 			{
@@ -47,8 +44,10 @@ namespace QuizMaster3000
 				});
 				c.DocInclusionPredicate((name, api) => true);
 			});
+			
 
 			var app = builder.Build();
+
 
 			// Configure the HTTP request pipeline.
 			if (!app.Environment.IsDevelopment())
@@ -71,7 +70,8 @@ namespace QuizMaster3000
 			{
 				endpoints.MapRazorPages();
 				endpoints.MapControllers();
-				endpoints.MapGet("/robots.txt", async context => await context.Response.WriteAsync("User-Agent: *\nDisallow: /"));
+				endpoints.MapGet("/robots.txt",
+					async context => await context.Response.WriteAsync("User-Agent: *\nDisallow: /"));
 			});
 
 			app.Run();
