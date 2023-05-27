@@ -38,6 +38,5 @@ namespace QuizMaster3000.Controllers
             return Ok(await provider.PostQuiz(10, 2, RoomState.InLobby));
         }
 
-
-    }
+	}
 }

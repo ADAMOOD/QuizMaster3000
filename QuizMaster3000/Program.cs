@@ -18,6 +18,7 @@ namespace BattlePlanner3000
                     policy => { policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod(); });
 			});
 
+
 			// Add services to the container.
 			builder.Services.AddRazorPages();
 			builder.Services.AddScoped<QuizProvider>();
