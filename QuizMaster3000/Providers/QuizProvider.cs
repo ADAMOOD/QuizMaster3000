@@ -15,9 +15,9 @@ namespace QuizMaster3000.Providers
 			return QuizList;
 		}
 
-		public async Task<Quiz> PostQuiz(int maxPlayerCount, int currentPlayerCount, RoomState roomState,List<Player> players)
+		public async Task<Quiz> PostQuizAsync(int maxPlayerCount, int currentPlayerCount, RoomState roomState,List<Player> players)
 		{
-			Quiz quiz = new Quiz(maxPlayerCount, currentPlayerCount, roomState,players);
+			var quiz = new Quiz(maxPlayerCount, currentPlayerCount, roomState,players);
 			QuizList.Add(quiz);
 			return quiz;
 		}
@@ -25,9 +25,9 @@ namespace QuizMaster3000.Providers
 		public async Task<List<Quiz>> GenerateQuizzesAsync(int amount)
 		{
 			QuizList.Clear();
-			for (int i = 0; i < amount; i++)
+			for (var i = 0; i < amount; i++)
 			{
-				Random random = new Random();
+				var random = new Random();
 				var roomStates = (RoomState[])Enum.GetValues(typeof(RoomState));
 
 				var maxPlayerCount = random.Next(1, 20);
@@ -47,25 +47,23 @@ namespace QuizMaster3000.Providers
 
 		private List<Player> GeneratePlayers(int min = 10, int max = 20)
 		{
-			Random rand = new Random();
-			int randomNum=rand.Next(min, max);
-			List<Player> playerList=new List<Player>();
-			int id;
-			for (int i = 0; i < randomNum; i++)
+			var rand = new Random();
+			var randomNum=rand.Next(min, max);
+			var playerList=new List<Player>();
+			for (var i = 0; i < randomNum; i++)
 			{
-				id=rand.Next();
+				var id = rand.Next();
 				playerList.Add(new Player(id,"hroch","hrosi rank","hrochov"));
 			}
 			return playerList;
 		}
 		private List<Player> GeneratePlayers(int playersAmount)
 		{
-			Random rand = new Random();
-			List<Player> playerList = new List<Player>();
-			int id;
-			for (int i = 0; i < playersAmount; i++)
+			var rand = new Random();
+			var playerList = new List<Player>();
+			for (var i = 0; i < playersAmount; i++)
 			{
-				id = rand.Next();
+				var id = rand.Next();
 				playerList.Add(new Player(id, "hroch", "hrosi rank", "hrochov"));
 			}
 			return playerList;
