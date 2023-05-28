@@ -1,4 +1,4 @@
-﻿{
+{
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
@@ -11,7 +11,7 @@
     "QuizMaster3000": {
       "commandName": "Project",
       "dotnetRunMessages": true,
-      "launchBrowser": true,
+      "launchBrowser": false,
       "applicationUrl": "http://localhost:5191",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

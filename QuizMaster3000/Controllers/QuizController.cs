@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using QuizMaster3000.Models;
 using QuizMaster3000.Providers;
 
@@ -17,25 +17,32 @@ namespace QuizMaster3000.Controllers
 
 		[HttpGet]
 		[Route("")]
-		public async Task<IActionResult> GetQuizzes()
+		public IActionResult GetQuizzes()
 		{
-			return Ok(await provider.GetQuizzes());
+			return Ok(provider.GetQuizzes());
 		}
 
 		[HttpGet]
 		[Route("random/{amount}")]
 		public async Task<IActionResult> GetRandomQuizzes([FromRoute] int amount)
 		{
-			return Ok(await provider.GenerateQuizzes(amount));
+			Random random = new Random();
+			await Task.Delay(random.Next(500, 5000));
+			return Ok(await provider.GenerateQuizzesAsync(amount));
+		}
+
+		[HttpGet]
+		[Route("data")]
+		public async Task<IActionResult> GetQuizDataAsync()
+		{
+			return Ok(await provider.GetQuizDataAsync());
 		}
 
 		[HttpPost]
 		[Route("")]
 		public async Task<IActionResult> PostQuiz() //momentalne jen testovaci data, pozdeji asi bude nejake ui
 		{
-			return Ok(await provider.PostQuiz(10,2,RoomState.InLobby));
+			return Ok(await provider.PostQuiz(10, 2, RoomState.InLobby,new List<Player>()));//prazdni players
 		}
-
-
 	}
 }

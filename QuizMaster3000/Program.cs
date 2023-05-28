@@ -15,7 +15,7 @@ namespace BattlePlanner3000
 			builder.Services.AddCors(options =>
 			{
 				options.AddPolicy(name: MyAllowSpecificOrigins,
-					policy => { policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod(); });
+                    policy => { policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod(); });
 			});
 
 

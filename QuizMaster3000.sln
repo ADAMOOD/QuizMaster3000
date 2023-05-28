@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizMaster3000", "QuizMaster3000\QuizMaster3000.csproj", "{0503CD59-5BCF-4B76-82DF-C0978340A2BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuizMaster3000", "QuizMaster3000\QuizMaster3000.csproj", "{0503CD59-5BCF-4B76-82DF-C0978340A2BC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{E6355391-1376-41EF-B54A-2E5B5E317211}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
