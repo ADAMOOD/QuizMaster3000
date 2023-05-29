@@ -42,7 +42,7 @@ namespace QuizMaster3000.Controllers
 		[Route("")]
 		public async Task<IActionResult> PostQuiz() //momentalne jen testovaci data, pozdeji asi bude nejake ui
 		{
-			return Ok(await provider.PostQuiz(10, 2, RoomState.InLobby,new List<Player>()));//prazdni players
+			return Ok(await provider.PostQuizAsync(10, 2, RoomState.InLobby,new List<Player>()));//prazdni players
 		}
 	}
 }
